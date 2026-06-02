@@ -1,29 +1,42 @@
-class	Plant:
-	instances = []
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_plant_factory.py                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
+#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-	def	__init__(self, name: str, height: float, ages: int, growth_rate: float = 0.8):
-		self.name = name
-		self.height = height
-		self.ages = ages
-		self.growth_rate = growth_rate
-		Plant.instances.append(self)
-	
-	def	__str__(self):
-		if self.ages != 1:
-			return (f"{self.name.capitalize()}: {self.height}cm, {self.ages} days old")
-		else:
-			return (f"{self.name.capitalize()}: {self.height}cm, {self.ages} day old")
+class Plant:
+    instances = []
 
-	def	show(self):
-		print("=== Garden Plant Registry ===")
-		for instance in Plant.instances:
-			print(instance)
-	
-	def	age(self):
-		self.ages += 1
+    def __init__(self, name: str, height: float, ages: int, growth_rate: float = 0.8):
+        self.name = name
+        self.height = height
+        self.ages = ages
+        self.growth_rate = growth_rate
+        Plant.instances.append(self)
 
-	def	grow(self):
-		self.height = round((self.height + self.growth_rate), 1)
+    def __str__(self):
+        if self.ages != 1:
+            return f"{self.name.capitalize()}: {self.height}cm, {self.ages} days old"
+        else:
+            return f"{self.name.capitalize()}: {self.height}cm, {self.ages} day old"
+
+    def show(self):
+        print("=== Garden Plant Registry ===")
+        for instance in Plant.instances:
+            print(instance)
+
+    def age(self):
+        self.ages += 1
+
+    def grow(self):
+        self.height = round((self.height + self.growth_rate), 1)
+
 
 if __name__ == "__main__":
     plants = [
