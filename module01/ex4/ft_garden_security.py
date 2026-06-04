@@ -1,21 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_security.py                              :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 class Plant:
     instances = []
 
-    def __init__(
-        self, name: str, height: float = 0, ages: int = 0, growth_rate: float = 0.8
-    ):
+    def __init__(self, name: str, height: float = 0, ages: int = 0,
+                 growth_rate: float = 0.8):
         self.name = name
         if height < 0:
             self._height = 0
@@ -30,20 +17,24 @@ class Plant:
 
     def __str__(self):
         if self.ages != 1:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} days old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} days old")
         else:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} day old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} day old")
 
     def get_height(self) -> float:
         return self._height
 
     def set_height(self, value: float) -> None:
         if value < 0:
-            print(f"{self.name.capitalize()}: Error, height can't be negative")
+            print(
+                f"{self.name.capitalize()}: Error, height can't be negative")
             print("Height update rejected")
         else:
             self._height = value
-            print(f"Height updated: {int(self._height)}cm")
+            print(
+                f"Height updated: {int(self._height)}cm")
 
     def get_age(self) -> int:
         return self._ages

@@ -1,12 +1,11 @@
 def ft_count_harvest_iterative():
-	days = input("Days until harvest: ")
-	i = 1
-	while (i <= int(days)):
-		print(f"Day {i}")
-		i += 1
-	print("Harvest time!")
+    days = input("Days until harvest: ")
+    i = 1
+    while i <= int(days):
+        print(f"Day {i}")
+        i += 1
+    print("Harvest time!")
 
 
-
-if	__name__ == "__main__":
-	ft_count_harvest_iterative()
+if __name__ == "__main__":
+    ft_count_harvest_iterative()

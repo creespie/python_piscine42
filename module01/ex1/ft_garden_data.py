@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_data.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:03 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:03 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 class Plant:
     instances = []
 
@@ -20,7 +8,8 @@ class Plant:
         Plant.instances.append(self)
 
     def __str__(self):
-        return f"{self.name.capitalize()}: {self.height} cm, {self.age} age old"
+        return (f"{self.name.capitalize()}: "
+                f"{self.height} cm, {self.age} age old")
 
     def show(self):
         print("=== Garden Plant Registry ===")

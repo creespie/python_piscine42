@@ -1,36 +1,9 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_analytics.py                             :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-#!/usr/bin/env python3
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plants_type.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-#!/usr/bin/env python3
-
-
 class Plant:
     instances = []
 
     def __init__(
-        self, name: str, height: float = 0, age: int = 0, growth_rate: float = 0.8
+        self, name: str, height: float = 0, age: int = 0,
+        growth_rate: float = 0.8
     ):
         self.name = name
         if height < 0:
@@ -47,9 +20,11 @@ class Plant:
 
     def __str__(self) -> str:
         if self._ages != 1:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} days old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} days old")
         else:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} day old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} day old")
 
     def get_height(self) -> float:
         return self._height
@@ -91,17 +66,17 @@ class Plant:
     @staticmethod
     def is_old(n):
         return n > 365
-    
+
     @classmethod
     def anonymous_plant(cls, name: str = "Unknown plant"):
         return cls(name)
-    
+
     class Stats:
         def __init__(self):
             self.grow = 0
             self.age = 0
             self.show = 0
-        
+
         def increase(self, argument):
             if argument == "grow":
                 self.grow += 1
@@ -109,15 +84,19 @@ class Plant:
                 self.age += 1
             elif argument == "show":
                 self.show += 1
-        
+
         def display(self):
             print(f"Stats: {self.grow} grow, {self.age} age, {self.show} show")
 
 
-
 class Flower(Plant):
     def __init__(
-        self, name: str, height: float, age: int, color: str = "white", growth_rate: float = 0.8
+        self,
+        name: str,
+        height: float,
+        age: int,
+        color: str = "white",
+        growth_rate: float = 0.8,
     ):
         super().__init__(name, height, age, growth_rate)
         self.color = color
@@ -134,11 +113,12 @@ class Flower(Plant):
     def bloom(self) -> None:
         self._blooming = True
 
+
 class Seed(Flower):
-    def __init__(self, name, height, age, color = "white", growth_rate = 0.8):
+    def __init__(self, name, height, age, color="white", growth_rate=0.8):
         super().__init__(name, height, age, color, growth_rate)
         self._seeds = 0
-    
+
     def grow(self):
         self._seeds += 23
         super().grow()
@@ -149,7 +129,14 @@ class Seed(Flower):
 
 
 class Tree(Plant):
-    def __init__(self, name: str,height: float, age: int, trunk_diameter: float = 1.0, growth_rate: float = 0.8,):
+    def __init__(
+        self,
+        name: str,
+        height: float,
+        age: int,
+        trunk_diameter: float = 1.0,
+        growth_rate: float = 0.8,
+    ):
         super().__init__(name, height, age, growth_rate)
         self.trunk_diameter = trunk_diameter
 
@@ -159,7 +146,8 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(
-            f"Tree {self.name.capitalize()} now produces a shade of {self._height}cm long and {self.trunk_diameter}cm wide."
+            f"Tree {self.name.capitalize()} now produces a shade of "
+            f"{self._height}cm long and {self.trunk_diameter}cm wide."
         )
         self._stats.increase("shade")
 
@@ -167,19 +155,26 @@ class Tree(Plant):
         def __init__(self):
             super().__init__()
             self.shade = 0
-        
+
         def increase(self, argument):
             super().increase(argument)
             if argument == "shade":
                 self.shade += 1
-        
+
         def display(self):
             super().display()
             print(f"{self.shade} shade")
-        
+
 
 class Vegetable(Plant):
-    def __init__(self, name: str, height: float, age: int, harvest_season: str, growth_rate: float = 0.8,):
+    def __init__(
+        self,
+        name: str,
+        height: float,
+        age: int,
+        harvest_season: str,
+        growth_rate: float = 0.8,
+    ):
         super().__init__(name, height, age, growth_rate)
         self.harvest_season = harvest_season
         self.nutritional_value = 0
@@ -203,7 +198,7 @@ if __name__ == "__main__":
     print("=== Check Year Old")
     print(f"Is 30 days more than a year? -> {Plant.is_old(30)}")
     print(f"Is 400 days more than a year? -> {Plant.is_old(400)}\n")
-    
+
     print("=== Flower")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
@@ -226,7 +221,7 @@ if __name__ == "__main__":
     oak.produce_shade()
     print("[statistics for Oak]")
     oak.stats_display()
-    print() 
+    print()
     print("=== Seed")
     sunflower = Seed("Sunflower", 80, 45, "yellow")
     sunflower.show()

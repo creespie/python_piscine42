@@ -1,19 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plant_factory.py                                :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 class Plant:
     instances = []
 
-    def __init__(self, name: str, height: float, ages: int, growth_rate: float = 0.8):
+    def __init__(self, name: str, height: float, ages: int,
+                 growth_rate: float = 0.8):
         self.name = name
         self.height = height
         self.ages = ages
@@ -22,9 +11,13 @@ class Plant:
 
     def __str__(self):
         if self.ages != 1:
-            return f"{self.name.capitalize()}: {self.height}cm, {self.ages} days old"
+            return (
+                f"{self.name.capitalize()}: "
+                f"{self.height}cm, {self.ages} days old"
+            )
         else:
-            return f"{self.name.capitalize()}: {self.height}cm, {self.ages} day old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self.height}cm, {self.ages} day old")
 
     def show(self):
         print("=== Garden Plant Registry ===")

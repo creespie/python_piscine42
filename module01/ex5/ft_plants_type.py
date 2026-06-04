@@ -1,24 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_plants_type.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lurossi <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/02 12:43:04 by lurossi           #+#    #+#              #
-#    Updated: 2026/06/02 12:43:04 by lurossi          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-#!/usr/bin/env python3
-
-
 class Plant:
     instances = []
 
-    def __init__(
-        self, name: str, height: float = 0, age: int = 0, growth_rate: float = 0.8
-    ):
+    def __init__(self, name: str, height: float = 0, age: int = 0,
+                 growth_rate: float = 0.8):
         self.name = name
         if height < 0:
             self._height = 0
@@ -33,16 +17,19 @@ class Plant:
 
     def __str__(self) -> str:
         if self._ages != 1:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} days old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} days old")
         else:
-            return f"{self.name.capitalize()}: {self._height}cm, {self._ages} day old"
+            return (f"{self.name.capitalize()}: "
+                    f"{self._height}cm, {self._ages} day old")
 
     def get_height(self) -> float:
         return self._height
 
     def set_height(self, value: float) -> None:
         if value < 0:
-            print(f"{self.name.capitalize()}: Error, height can't be negative")
+            print(f"{self.name.capitalize()}: Error, height can't be negative"
+                  )
             print("Height update rejected")
         else:
             self._height = value
@@ -53,7 +40,8 @@ class Plant:
 
     def set_age(self, value: int) -> None:
         if value < 0:
-            print(f"{self.name.capitalize()}: Error, age can't be negative")
+            print(f"{self.name.capitalize()}: Error, age can't be negative"
+                  )
             print("Age update rejected")
         else:
             self._ages = value
@@ -71,7 +59,8 @@ class Plant:
 
 class Flower(Plant):
     def __init__(
-        self, name: str, height: float, age: int, color: str, growth_rate: float = 0.8
+        self, name: str, height: float, age: int, color: str,
+        growth_rate: float = 0.8
     ):
         super().__init__(name, height, age, growth_rate)
         self.color = color
@@ -107,7 +96,8 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(
-            f"Tree {self.name.capitalize()} now produces a shade of {self._height}cm long and {self.trunk_diameter}cm wide."
+            f"Tree {self.name.capitalize()} now produces a shade of "
+            f"{self._height}cm long and {self.trunk_diameter}cm wide."
         )
 
 
