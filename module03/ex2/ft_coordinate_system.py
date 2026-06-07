@@ -4,7 +4,7 @@ def get_player_pos():
     print("=== Game Coordinate System ===")
     print("Get a first set of coordinates")
     coords = None
-    while not coords:
+    while coords is None:
         try:
             coords = tuple(float(n) for n in input("Enter new coordinates as floats in format 'x,y,z': ").split(","))
         except:
@@ -15,7 +15,7 @@ def get_player_pos():
     print(f"Distance to center: {distance}\n")
     print("Get a second set of coordinates")
     second_coords = None
-    while not second_coords:
+    while second_coords is None:
         strings = input("Enter new coordinates as floats in format 'x,y,z': ").split(",")
         for n in strings:
             try:
