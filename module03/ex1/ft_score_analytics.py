@@ -12,7 +12,7 @@ def scores_analytics():
             else:
                 scores.append(int(score))
         except:
-            print(f"Invalid parameter: {score}")
+            print(f"Invalid parameter: '{score}'")
     if len(scores) == 0:
         print("No scores provided. Usage: "
                 "python3 ft_score_analytics.py <score1> <score2> ...")
@@ -22,10 +22,10 @@ def scores_analytics():
         total = 0
         for x in scores:
             total += x
-        print(f"Total scores: {sum(scores)}")
+        print(f"Total score: {sum(scores)}")
         print(f"Average score: {round(total / len(scores), 1)}")
         print(f"High score: {max(scores)}")
-        print(f"Low scores: {min(scores)}")
+        print(f"Low score: {min(scores)}")
         print(f"Range: {max(scores) - min(scores)}")
 
 

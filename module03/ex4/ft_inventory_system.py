@@ -18,7 +18,10 @@ def     inventory_manager():
             print(f"Quantity error for {key}: invalid literal for int() with base 10: '{insertion[1]}'")
             continue
         inventory[key] = quantity
-    print(f"Got inventory: {list(inventory)}")
+    if not inventory:
+        print("No valid items provided.")
+        return
+    print(f"Got inventory: {inventory}")
     print(f"Item list: {list(inventory.keys())}")
     print(f"Total quantity of the {len(inventory.keys())} items: {sum(inventory.values())}")
     for key, quantity in inventory.items():
@@ -41,4 +44,7 @@ def     inventory_manager():
     print(f"Updated inventory: {inventory}")
 
 if __name__ == "__main__":
-    inventory_manager()
+    if len(sys.argv) == 1:
+        pass
+    else:
+        inventory_manager()
