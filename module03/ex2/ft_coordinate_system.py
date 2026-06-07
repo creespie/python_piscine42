@@ -33,7 +33,7 @@ def get_player_pos():
             except Exception:
                 print(
                     f"Error on parameter '{n}': "
-                    "could not convert string to float: '{n}'"
+                    f"could not convert string to float: '{n}'"
                 )
         try:
             second_coords = tuple(float(n) for n in strings)

@@ -19,7 +19,7 @@ def inventory_manager():
         except Exception:
             print(
                 f"Quantity error for {key}: invalid literal for int() "
-                "with base 10: '{insertion[1]}'"
+                f"with base 10: '{insertion[1]}'"
             )
             continue
         inventory[key] = quantity
