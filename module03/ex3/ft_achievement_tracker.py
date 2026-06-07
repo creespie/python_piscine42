@@ -1,18 +1,29 @@
 import random
 
+
 def create_player(achievements) -> set:
     player_set = set()
-    for _ in range(random.randint(1,12)):
+    for _ in range(random.randint(1, 12)):
         player_set.add(random.choice(list(achievements)))
     return player_set
 
 
 def get_player_achievements():
-    achievements = {'Crafting Genius', 'Strategist', 'World Savior',
-                    'Speed Runner', 'Survivor',
-                    'Master Explorer', 'Treasure Hunter', 'Unstoppable',
-                    'First Steps', 'Collector Supreme',
-                    'Untouchable', 'Sharp Mind', 'Boss Slayer'}
+    achievements = {
+        "Crafting Genius",
+        "Strategist",
+        "World Savior",
+        "Speed Runner",
+        "Survivor",
+        "Master Explorer",
+        "Treasure Hunter",
+        "Unstoppable",
+        "First Steps",
+        "Collector Supreme",
+        "Untouchable",
+        "Sharp Mind",
+        "Boss Slayer",
+    }
     alice = create_player(achievements)
     bob = create_player(achievements)
     dylan = create_player(achievements)
@@ -32,6 +43,7 @@ def get_player_achievements():
     print(f"Bob is missing: {achievements.difference(bob)}")
     print(f"Dylan is missing: {achievements.difference(dylan)}")
     print(f"Charlie is missing: {achievements.difference(charlie)}")
+
 
 if __name__ == "__main__":
     get_player_achievements()

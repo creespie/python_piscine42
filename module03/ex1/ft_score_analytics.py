@@ -1,6 +1,7 @@
 #!./usr/bin/env python
 import sys
 
+
 def scores_analytics():
     print("=== Player Score Analytics ===")
     scores = []
@@ -11,11 +12,13 @@ def scores_analytics():
                 i += 1
             else:
                 scores.append(int(score))
-        except:
+        except Exception:
             print(f"Invalid parameter: '{score}'")
     if len(scores) == 0:
-        print("No scores provided. Usage: "
-                "python3 ft_score_analytics.py <score1> <score2> ...")
+        print(
+            "No scores provided. Usage: "
+            "python3 ft_score_analytics.py <score1> <score2> ..."
+        )
     else:
         print(f"Scores processed: {scores}")
         print(f"Total players: {len(scores)}")
