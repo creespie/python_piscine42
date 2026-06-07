@@ -11,7 +11,7 @@ def gen_event() -> typing.Generator[tuple[str,str], None, None]:
 
 
 def consume_event(list_of_ten: list) -> typing.Generator[tuple[str, str], None, None]:
-    while True:
+    while list_of_ten:
         to_remove = random.choice(list_of_ten)
         list_of_ten.remove(to_remove)
         yield to_remove

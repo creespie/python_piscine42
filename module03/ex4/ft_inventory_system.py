@@ -4,9 +4,10 @@ def     inventory_manager():
     inventory = {}
     print("=== Inventory System Analysis ===")
     for insertion in sys.argv[1:]:
+        error_output = insertion
         insertion = insertion.split(":")
         if len(insertion) != 2:
-            print(f"Error - invalid parameter '{insertion}'")
+            print(f"Error - invalid parameter '{error_output}'")
             continue
         key = insertion[0]
         if key in inventory.keys():
@@ -40,7 +41,7 @@ def     inventory_manager():
         elif smallest[1] > quantity:
             smallest = (item, quantity)
     print(f"Item least abundant: {smallest[0]} with quantity {smallest[1]}")
-    inventory.update({"magic item":1})
+    inventory.update({"magic_item":1})
     print(f"Updated inventory: {inventory}")
 
 if __name__ == "__main__":
