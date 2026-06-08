@@ -22,23 +22,26 @@ def reading() -> None:
             print("\n---")
         except Exception as e:
             file.close()
-            print(f"Error opening file '{sys.argv[1]}': {e}")
+            sys.stderr.write(f"[STDERR] Error opening file '{sys.argv[1]}': {e}\n")
+            sys.stderr.flush()
         try:
-            new_file = input("Enter new file name (or empty): ")
+            sys.stdout.write("Enter new file name (or empty): ")
+            sys.stdout.flush()
+            new_file = sys.stdin.readline()
             if new_file is None:
                 print("Not saving data")
             else:
-                file = open(new_file, "w")
-                print(f"Saving data to '{new_file}'")
+                file = open(new_file[:-1], "w")
+                print(f"Saving data to '{new_file[:-1]}'")
                 for line in text:
                     file.write(f"{line}#\n")
-                print(f"Data saved in file '{new_file}'")
+                print(f"Data saved in file '{new_file[:-1]}'")
                 file.close()
         except Exception as e:
             file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
             print("Data not saved.")
-        
+
         
 if __name__ == "__main__":
     reading()

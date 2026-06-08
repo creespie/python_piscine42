@@ -17,6 +17,7 @@ def reading() -> None:
             file.close()
             print(f"File '{sys.argv[1]}' closed.")
         except Exception as e:
+            file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
         
 if __name__ == "__main__":
