@@ -27,7 +27,7 @@ def reading() -> None:
             print(f"Error opening file '{sys.argv[1]}': {e}")
         try:
             new_file = input("Enter new file name (or empty): ")
-            if new_file is None:
+            if new_file == "":
                 print("Not saving data")
             else:
                 file = None
@@ -40,7 +40,7 @@ def reading() -> None:
         except Exception as e:
             if file is not None:
                 file.close()
-            print(f"Error opening file '{sys.argv[1]}': {e}")
+            print(f"{e}")
             print("Data not saved.")
 
 
