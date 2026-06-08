@@ -31,7 +31,7 @@ def reading() -> None:
             sys.stdout.write("Enter new file name (or empty): ")
             sys.stdout.flush()
             new_file = sys.stdin.readline()
-            if new_file == '\n':
+            if new_file.strip() == '':
                 print("Not saving data")
             else:
                 file = None
