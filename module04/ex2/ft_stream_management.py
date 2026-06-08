@@ -6,6 +6,7 @@ def reading() -> None:
         print("Usage: ft_ancient_text.py <file>")
     else:
         try:
+            file = None
             print("=== Cyber Archives Recovery ===")
             file = open(sys.argv[1])
             text = file.read().split("\n")
@@ -21,7 +22,8 @@ def reading() -> None:
                 print(f"{line}#")
             print("\n---")
         except Exception as e:
-            file.close()
+            if file is not None:
+                file.close()
             sys.stderr.write(
                 f"[STDERR] Error opening file '{sys.argv[1]}': {e}\n")
             sys.stderr.flush()
@@ -32,6 +34,7 @@ def reading() -> None:
             if new_file is None:
                 print("Not saving data")
             else:
+                file = None
                 file = open(new_file[:-1], "w")
                 print(f"Saving data to '{new_file[:-1]}'")
                 for line in text:
@@ -39,7 +42,8 @@ def reading() -> None:
                 print(f"Data saved in file '{new_file[:-1]}'")
                 file.close()
         except Exception as e:
-            file.close()
+            if file is not None:
+                file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
             print("Data not saved.")
 

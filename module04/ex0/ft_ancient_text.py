@@ -6,6 +6,7 @@ def reading() -> None:
         print("Usage: ft_ancient_text.py <file>")
     else:
         try:
+            file = None
             print("=== Cyber Archives Recovery ===")
             file = open(sys.argv[1])
             text = file.read().split("\n")
@@ -17,7 +18,8 @@ def reading() -> None:
             file.close()
             print(f"File '{sys.argv[1]}' closed.")
         except Exception as e:
-            file.close()
+            if file is not None:
+                file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
 
 
