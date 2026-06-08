@@ -1,16 +1,16 @@
 def secure_archive(
         filename: str, option: str, to_write: str = "") -> tuple[bool, str]:
-    try:   
+    try:
         if option == "write":
             with open(filename, "w") as file:
                 file.write(to_write)
-                return(True, 'Content successfully written to file')
+                return (True, "Content successfully written to file")
         elif option == "read":
             with open(filename) as file:
-                return(True, file.read())
+                return (True, file.read())
         else:
             raise ValueError('Option must be either "write" or "read".'
-                                ' No other input is allowed')
+                             ' No other input is allowed')
     except Exception as e:
         return (False, str(e))
 

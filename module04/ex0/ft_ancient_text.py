@@ -1,5 +1,5 @@
 import sys
-import typing
+
 
 def reading() -> None:
     if len(sys.argv) != 2:
@@ -19,6 +19,7 @@ def reading() -> None:
         except Exception as e:
             file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
-        
+
+
 if __name__ == "__main__":
     reading()

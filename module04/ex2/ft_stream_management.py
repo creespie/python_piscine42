@@ -1,5 +1,5 @@
 import sys
-import typing
+
 
 def reading() -> None:
     if len(sys.argv) != 2:
@@ -22,7 +22,8 @@ def reading() -> None:
             print("\n---")
         except Exception as e:
             file.close()
-            sys.stderr.write(f"[STDERR] Error opening file '{sys.argv[1]}': {e}\n")
+            sys.stderr.write(
+                f"[STDERR] Error opening file '{sys.argv[1]}': {e}\n")
             sys.stderr.flush()
         try:
             sys.stdout.write("Enter new file name (or empty): ")
@@ -42,6 +43,6 @@ def reading() -> None:
             print(f"Error opening file '{sys.argv[1]}': {e}")
             print("Data not saved.")
 
-        
+
 if __name__ == "__main__":
     reading()

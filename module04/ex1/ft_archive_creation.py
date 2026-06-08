@@ -1,5 +1,5 @@
 import sys
-import typing
+
 
 def reading() -> None:
     if len(sys.argv) != 2:
@@ -38,7 +38,7 @@ def reading() -> None:
             file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
             print("Data not saved.")
-        
-        
+
+
 if __name__ == "__main__":
     reading()
