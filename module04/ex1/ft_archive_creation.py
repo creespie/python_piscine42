@@ -25,23 +25,24 @@ def reading() -> None:
             if file is not None:
                 file.close()
             print(f"Error opening file '{sys.argv[1]}': {e}")
-        try:
-            new_file = input("Enter new file name (or empty): ")
-            if new_file == "":
-                print("Not saving data")
-            else:
-                file = None
-                file = open(new_file, "w")
-                print(f"Saving data to '{new_file}'")
-                for line in text:
-                    file.write(f"{line}#\n")
-                print(f"Data saved in file '{new_file}'")
-                file.close()
-        except Exception as e:
-            if file is not None:
-                file.close()
-            print(f"{e}")
-            print("Data not saved.")
+        else:
+            try:
+                new_file = input("Enter new file name (or empty): ")
+                if new_file == "":
+                    print("Not saving data")
+                else:
+                    file = None
+                    file = open(new_file, "w")
+                    print(f"Saving data to '{new_file}'")
+                    for line in text:
+                        file.write(f"{line}#\n")
+                    print(f"Data saved in file '{new_file}'")
+                    file.close()
+            except Exception as e:
+                if file is not None:
+                    file.close()
+                print(f"{e}")
+                print("Data not saved.")
 
 
 if __name__ == "__main__":
