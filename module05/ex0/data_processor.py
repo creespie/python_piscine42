@@ -16,8 +16,8 @@ class DataProcessor(ABC):
         pass
 
     def output(self) -> tuple[int, str]:
-        self._counter += 1
         popped = self._storage.pop(0)
+        self._counter += 1
         return (self._counter - 1, popped)
 
 
