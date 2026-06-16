@@ -1,6 +1,7 @@
 from ex0.creatures import Creature
 from abc import ABC, abstractmethod
 
+
 class BattleStrategy(ABC):
     @abstractmethod
     def act(self, creature: Creature) -> None:
@@ -10,12 +11,14 @@ class BattleStrategy(ABC):
     def is_valid(self, creature: Creature) -> None:
         pass
 
+
 class NormalStrategy(BattleStrategy):
     def is_valid(self, creature):
         return True
-    
+
     def act(self, creature: Creature):
         print(creature.attack())
+
 
 class AggressiveStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
@@ -25,7 +28,7 @@ class AggressiveStrategy(BattleStrategy):
             return True
         except Exception:
             return False
-        
+
     def act(self, creature: Creature):
         if self.is_valid(creature):
             print(creature.transform())
@@ -33,11 +36,12 @@ class AggressiveStrategy(BattleStrategy):
             print(creature.revert())
         else:
             print(
-                            "Battle error, aborting tournament: Invalid Creat"
-                            f"ure '{creature.name}' for this aggressive st"
-                            "rategy"
-                             )
-            
+                "Battle error, aborting tournament: Invalid Creat"
+                f"ure '{creature.name}' for this aggressive st"
+                "rategy"
+            )
+
+
 class DefensiveStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
         try:
@@ -45,13 +49,13 @@ class DefensiveStrategy(BattleStrategy):
             return True
         except Exception:
             return False
-        
+
     def act(self, creature: Creature):
         if self.is_valid(creature):
             print(creature.attack())
             print(creature.heal())
         else:
             print(
-                            "Battle error, aborting tournament: Invalid Crea"
-                             f"ture '{creature}' for this defensive strategy"
-                             )
+                "Battle error, aborting tournament: Invalid Crea"
+                f"ture '{creature}' for this defensive strategy"
+            )

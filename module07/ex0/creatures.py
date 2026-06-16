@@ -1,19 +1,19 @@
 from abc import ABC, abstractmethod
 
-class Creature(ABC):
 
+class Creature(ABC):
     def __init__(self, name: str, element: str, move: str) -> None:
         self.name: str = name.capitalize()
         self.element: str = element.capitalize()
         self.move: str = move.capitalize()
 
     @abstractmethod
-    def attack(self) -> None:
+    def attack(self) -> str:
         pass
 
     def describe(self) -> str:
         return f"{self.name} is a {self.element} element Creature"
-    
+
 
 class Flameling(Creature):
     def attack(self) -> str:
@@ -29,31 +29,33 @@ class Aquabub(Creature):
     def attack(self) -> str:
         return f"{self.name} uses {self.move}!"
 
-   
+
 class Torragon(Creature):
     def attack(self) -> str:
         return f"{self.name} uses {self.move}!"
-    
+
 
 class CreatureFactory(ABC):
     @abstractmethod
-    def create_base(self) -> str:
+    def create_base(self) -> Creature:
         pass
 
     @abstractmethod
-    def create_evolved(self) -> str:
+    def create_evolved(self) -> Creature:
         pass
 
+
 class FlameFactory(CreatureFactory):
-    def create_base(self) -> str:
+    def create_base(self) -> Creature:
         return Flameling("flameling", "fire", "ember")
-    
-    def create_evolved(self) -> str:
+
+    def create_evolved(self) -> Creature:
         return Pyrodon("pyrodon", "fire/flying", "flamethrower")
-    
+
+
 class AquaFactory(CreatureFactory):
-    def create_base(self) -> str:
+    def create_base(self) -> Creature:
         return Aquabub("aquabub", "water", "water gun")
-    
-    def create_evolved(self) -> str:
+
+    def create_evolved(self) -> Creature:
         return Torragon("Torragon", "water", "hydro pump")
