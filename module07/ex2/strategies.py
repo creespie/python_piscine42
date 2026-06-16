@@ -32,8 +32,10 @@ class AggressiveStrategy(BattleStrategy):
             print(creature.attack())
             print(creature.revert())
         else:
-            raise ValueError("Battle error, aborting tournament: Invalid Crea"
-                             f"ture '{creature}' for this aggressive strategy"
+            print(
+                            "Battle error, aborting tournament: Invalid Creat"
+                            f"ure '{creature.name}' for this aggressive st"
+                            "rategy"
                              )
             
 class DefensiveStrategy(BattleStrategy):
@@ -49,5 +51,7 @@ class DefensiveStrategy(BattleStrategy):
             print(creature.attack())
             print(creature.heal())
         else:
-            raise ValueError("Battle error, aborting tournament: Invalid Crea"
-                             f"ture '{creature}' for this defensive strategy")
+            print(
+                            "Battle error, aborting tournament: Invalid Crea"
+                             f"ture '{creature}' for this defensive strategy"
+                             )

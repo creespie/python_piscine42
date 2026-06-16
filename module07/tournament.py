@@ -5,7 +5,7 @@ import ex2
 print("Tournament 0 (basic)")
 print("[ (Flameling+Normal), (Healing+Defensive) ]")
 print("*** Tournament ***")
-print("2 opponents involved")
+print("2 opponents involved\n")
 print("* Battle *")
 flameling = ex0.FlameFactory().create_base()
 pyrodon = ex0.FlameFactory().create_evolved()
@@ -21,44 +21,38 @@ print(sproutling.describe())
 print("now fight!")
 ex2.NormalStrategy().act(flameling)
 ex2.DefensiveStrategy().act(sproutling)
-print("Tournament 1 (error)")
+print("\nTournament 1 (error)")
 print("[ (Flameling+Aggressive), (Healing+Defensive) ]")
-*** Tournament ***
-2 opponents involved
-* Battle *
-Flameling is a Fire type Creature
-vs.
-Sproutling is a Grass type Creature
-now fight!
-Battle error, aborting tournament: Invalid Creature 'Flameling' for this aggressive strategy
-Tournament 2 (multiple)
-[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]
-*** Tournament ***
-3 opponents involved
-* Battle *
-Aquabub is a Water type Creature
-vs.
-Sproutling is a Grass type Creature
-now fight!
-Aquabub uses Water Gun!
-Sproutling uses Vine Whip!
-Sproutling heals itself for a small amount
-* Battle *
-Aquabub is a Water type Creature
-vs.
-Shiftling is a Normal type Creature
-now fight!
-Aquabub uses Water Gun!
-Shiftling shifts into a sharper form!
-Shiftling performs a boosted strike!
-Shiftling returns to normal.
-* Battle *
-Sproutling is a Grass type Creature
-vs.
-Shiftling is a Normal type Creature
-now fight!
-Sproutling uses Vine Whip!
-Sproutling heals itself for a small amount
-Shiftling shifts into a sharper form!
-Shiftling performs a boosted strike!
-Shiftling returns to normal.
+print("*** Tournament ***")
+print("2 opponents involved")
+print("\n* Battle *")
+print(flameling.describe())
+print("vs.")
+print(sproutling.describe())
+print("now fight!")
+ex2.AggressiveStrategy().act(flameling)
+print("\nTournament 2 (multiple)")
+print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
+print("*** Tournament ***")
+print("3 opponents involved")
+print("\n* Battle *")
+print(aquabub.describe())
+print("vs.")
+print(sproutling.describe())
+print("now fight!")
+ex2.NormalStrategy().act(aquabub)
+ex2.DefensiveStrategy().act(sproutling)
+print("\n* Battle *")
+print(aquabub.describe())
+print("vs.")
+print(shiftling.describe())
+print("now fight!")
+ex2.NormalStrategy().act(aquabub)
+ex2.AggressiveStrategy().act(shiftling)
+print("\n* Battle *")
+print(sproutling.describe())
+print("vs.")
+print(shiftling.describe())
+print("now fight!")
+ex2.DefensiveStrategy().act(sproutling)
+ex2.AggressiveStrategy().act(shiftling)
