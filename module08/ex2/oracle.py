@@ -60,9 +60,10 @@ def security_check() -> list[tuple[bool, str]]:
     no_hardcoded = True
     checks.append((no_hardcoded, "No hardcoded secrets detected"))
 
-    production_override = MATRIX_MODE == "production" or os.environ.get(
-        "MATRIX_MODE"
-    ) is not None
+    production_override = (
+        MATRIX_MODE == "production" or os.environ.get(
+            "MATRIX_MODE") is not None
+    )
     checks.append((production_override, "Production overrides available"))
 
     return checks

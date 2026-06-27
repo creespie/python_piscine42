@@ -5,6 +5,7 @@ missing: list[str] = []
 
 try:
     import pandas
+
     print(f"[OK] pandas ({pandas.__version__}) - Data manipulation ready")
 except ImportError:
     missing.append("pandas")
@@ -12,6 +13,7 @@ except ImportError:
 
 try:
     import numpy
+
     print(f"[OK] numpy ({numpy.__version__}) - Numerical computation ready")
 except ImportError:
     missing.append("numpy")
@@ -19,6 +21,7 @@ except ImportError:
 
 try:
     import requests
+
     print(f"[OK] requests ({requests.__version__}) - Network access ready")
 except ImportError:
     missing.append("requests")
@@ -27,6 +30,7 @@ except ImportError:
 try:
     import matplotlib
     import matplotlib.pyplot as plt
+
     print(f"[OK] matplotlib ({matplotlib.__version__}) - Visualization ready")
 except ImportError:
     missing.append("matplotlib")
