@@ -22,7 +22,7 @@ def main():
     )
     print("Space Station Data Validation")
     print("=============================")
-    print("Valida station created:")
+    print("Valid station created:")
     print(f"ID: {station.station_id}")
     print(f"Name: {station.name}")
     print(f"Crew: {station.crew_size} people")
