@@ -8,7 +8,7 @@ def spell_reducer(spells: list[int], operation: str) -> int:
     if len(spells) == 0:
         return 0
 
-    operations = {
+    operations: dict[str, Callable[[int, int], int]] = {
         "add": operator.add,
         "multiply": operator.mul,
         "max": max,
@@ -58,6 +58,7 @@ def spell_dispatcher() -> Callable[[Any], str]:
 
 
 # --- Funzione di esempio per testare partial_enchanter ---
+
 
 def enchant(power: int, element: str, target: str) -> str:
     return f"{element} enchantment ({power}) on {target}"
