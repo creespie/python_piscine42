@@ -19,7 +19,6 @@ ZION_ENDPOINT: str | None = os.environ.get("ZION_ENDPOINT")
 
 
 def mask(value: str | None) -> str:
-    """Mask a secret value, showing only first 4 characters."""
     if value is None:
         return "NOT SET"
     if len(value) <= 4:
@@ -28,7 +27,6 @@ def mask(value: str | None) -> str:
 
 
 def check_database(url: str | None) -> str:
-    """Return database status based on mode and URL."""
     if url is None:
         return "NOT CONFIGURED"
     if MATRIX_MODE == "development":
@@ -37,21 +35,18 @@ def check_database(url: str | None) -> str:
 
 
 def check_api(key: str | None) -> str:
-    """Return API access status."""
     if key is None:
         return "NOT AUTHENTICATED"
     return "Authenticated"
 
 
 def check_zion(endpoint: str | None) -> str:
-    """Return Zion network status."""
     if endpoint is None:
         return "OFFLINE"
     return "Online"
 
 
 def security_check() -> list[tuple[bool, str]]:
-    """Run environment security checks, return list of (ok, message) tuples."""
     checks: list[tuple[bool, str]] = []
 
     env_file_exists = os.path.exists(".env")
@@ -70,7 +65,6 @@ def security_check() -> list[tuple[bool, str]]:
 
 
 def print_dev_info() -> None:
-    """Print extra debug info only in development mode."""
     print("\n[DEBUG] Development mode active:")
     print(f"  LOG_LEVEL: {LOG_LEVEL}")
     print(f"  DATABASE_URL: {mask(DATABASE_URL)}")

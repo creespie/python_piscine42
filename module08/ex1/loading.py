@@ -1,3 +1,4 @@
+import os
 print("LOADING STATUS: Loading programs...")
 print("\nChecking dependencies:")
 
@@ -18,14 +19,6 @@ try:
 except ImportError:
     missing.append("numpy")
     print("[MISSING] numpy")
-
-try:
-    import requests
-
-    print(f"[OK] requests ({requests.__version__}) - Network access ready")
-except ImportError:
-    missing.append("requests")
-    print("[MISSING] requests")
 
 try:
     import matplotlib
@@ -59,3 +52,22 @@ else:
 
     print("\nAnalysis complete!")
     print("Results saved to: matrix_analysis.png")
+
+    print("\nDependency manager comparison:")
+    print(f"{'Package':<12}{'Version':<12}{'Managed by'}")
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    using_poetry = os.environ.get("POETRY_ACTIVE") == "1" or os.path.exists(os.path.join(script_dir, "poetry.lock"))
+    manager = "Poetry (pyproject.toml + poetry.lock)" if using_poetry else "pip (requirements.txt)"
+
+    for pkg_name, pkg_version in [
+        ("pandas", pandas.__version__),
+        ("numpy", numpy.__version__),
+        ("matplotlib", matplotlib.__version__),
+    ]:
+        print(f"{pkg_name:<12}{pkg_version:<12}{manager}")
+
+    print("\npip installs whatever version range requirements.txt allows,")
+    print("without recording an exact resolved version anywhere.")
+    print("Poetry resolves every dependency once and pins it in poetry.lock,")
+    print("so every teammate gets the exact same versions.")
